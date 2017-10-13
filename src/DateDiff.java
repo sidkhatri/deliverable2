@@ -24,29 +24,29 @@ public class DateDiff {
 		 int y2 = scnr.nextInt();
 		 
 		 //Setting the dates
-		 LocalDate Date1 = LocalDate.of(y1, m1, d1);
-		 LocalDate Date2 = LocalDate.of(y2, m2, d2);
+		 LocalDate Date1 = LocalDate.of(m1, d1, y1);
+		 LocalDate Date2 = LocalDate.of(m2, d2, y2);
 		 
-		 //Period class used to find difference between the dates 
-		 Period d = Period.between(Date1, Date2);
+		 //Using the Period class to find the difference between the dates 
+		 Period d = Period.between(Date2, Date1);
 		 
-		 //Placing differences between years/month/day into int variables
-		 int days = d.getDays();
-		 int months = d.getMonths();
-		 int years = d.getYears();
+		 //Placing differences between months/days/years into int variables
+		 int months = d.getMonths(); 
+		 int days = d.getDays();  
+		 int years = d.getYears(); 
 		 
 		 //The following prevents negative numbers in case the first date is smaller than the second.  
-		 if(d.getDays() < 0) {
-	            days = d.getDays() * -1;
-	        }
-	        else if (d.getMonths() < 0) {
+		 if(months < 0) {
 	            months = d.getMonths() * -1;
 	        }
-	        else if (d.getYears() < 0) {
+	        else if (days < 0) {
+	            days = d.getDays() * -1;
+	        }
+	        else if (years < 0) {
 	            years = d.getYears() * -1;
 	        }
 
-		 //Printing the difference to the console
+		 //Printing the difference between dates to the console
 		 System.out.println("The difference between the two dates is " + months + " months, " +
 	                days + " days, and " + years + " years.");
 	 }
